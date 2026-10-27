@@ -1,0 +1,378 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>কচুয়া কারিগরপাড়া মসজিদ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@500;700;800&display=swap">
+<style>
+/* Layout: sticky bar, arch-framed hero with live next-prayer card, prayer table, service grid, notices, donation + contact bands */
+:root {
+  --bg: #f2f6f3;
+  --surface: #ffffff;
+  --fg: #12201c;
+  --muted: #55675f;
+  --pine: #0e3b33;
+  --pine-2: #15564a;
+  --brass: #a8761a;
+  --brass-soft: #f1e3c2;
+  --line: #d3ded8;
+  --on-pine: #eaf3ee;
+  --font-display: "Noto Serif Bengali", "Kalpurush", serif;
+  --font-body: "Hind Siliguri", "Noto Sans Bengali", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b1512; --surface: #12211d; --fg: #e6efea; --muted: #9db1a8;
+    --pine: #0a2822; --pine-2: #1d6a5b; --brass: #e0b45a; --brass-soft: #2a2412;
+    --line: #25382f; --on-pine: #eaf3ee; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b1512; --surface: #12211d; --fg: #e6efea; --muted: #9db1a8;
+  --pine: #0a2822; --pine-2: #1d6a5b; --brass: #e0b45a; --brass-soft: #2a2412;
+  --line: #25382f; --on-pine: #eaf3ee; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.7;
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--brass); outline-offset: 2px; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.35; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.wrap {
+  max-width: 1120px; margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.kicker { font-size: 0.85rem; letter-spacing: 0.08em; color: var(--brass); font-weight: 600; }
+
+/* top bar */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--pine); }
+.bar { background: var(--pine); color: var(--on-pine); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; }
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; }
+.brand { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; text-decoration: none; display: flex; align-items: center; gap: 10px; min-width: 0; }
+.brand svg { flex: none; }
+.nav { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+.nav a { text-decoration: none; padding: 6px 12px; border-radius: 6px; font-size: 0.95rem; }
+.nav a:hover { background: rgba(255,255,255,0.12); }
+@media (max-width: 760px) { .nav a:nth-child(n+4) { display: none; } .brand span { font-size: 0.95rem; } }
+
+/* hero */
+.hero { background: var(--pine); color: var(--on-pine); position: relative; overflow: hidden; }
+.hero::before {
+  content: ""; position: absolute; inset: 0; opacity: 0.09;
+  background:
+    conic-gradient(from 45deg at 50% 50%, transparent 0 25%, #fff 0 50%, transparent 0 75%, #fff 0) 0 0 / 56px 56px;
+  mask-image: linear-gradient(90deg, #000, transparent 70%);
+  -webkit-mask-image: linear-gradient(90deg, #000, transparent 70%);
+}
+.hero .wrap { position: relative; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: end; padding-block: 56px 0; }
+.hero-text { padding-bottom: 56px; min-width: 0; }
+.hero h1 { font-size: clamp(2rem, 5.2vw, 3.4rem); font-weight: 800; margin-top: 12px; }
+.hero .lead { margin-top: 18px; max-width: 34em; color: color-mix(in srgb, var(--on-pine) 85%, transparent); font-size: 1.1rem; }
+.hero .kicker { color: var(--brass-soft); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.btn { display: inline-block; text-decoration: none; padding: 11px 22px; border-radius: 8px; font-weight: 600; border: 2px solid transparent; }
+.btn-brass { background: var(--brass-soft); color: #3a2a06; }
+.btn-brass:hover { background: #fff; }
+.btn-line { border-color: rgba(255,255,255,0.4); color: var(--on-pine); }
+.btn-line:hover { background: rgba(255,255,255,0.12); }
+.arch {
+  background: var(--surface); color: var(--fg);
+  border-radius: 999px 999px 0 0; padding: 64px 28px 28px; text-align: center;
+  border: 6px solid var(--brass); border-bottom: 0; min-width: 0;
+}
+.arch .label { color: var(--muted); font-size: 0.95rem; }
+.arch .next { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--pine-2); margin-top: 4px; }
+:root[data-theme="dark"] .arch .next { color: var(--brass); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .arch .next { color: var(--brass); } }
+.arch .time { font-size: 2.6rem; font-weight: 700; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.arch .count { margin-top: 6px; color: var(--muted); }
+.arch .today { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 0.9rem; color: var(--muted); }
+@media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; gap: 0; } .arch { max-width: 420px; margin-inline: auto; width: 100%; } }
+
+/* sections */
+section { padding-block: 64px; }
+.sec-head { max-width: 40em; margin-bottom: 32px; }
+.sec-head h2 { font-size: clamp(1.6rem, 3.6vw, 2.2rem); margin-top: 6px; }
+.sec-head p { color: var(--muted); margin-top: 10px; }
+
+/* prayer table */
+.times { display: grid; grid-template-columns: 1.5fr 1fr; gap: 28px; align-items: start; }
+.tbl-box { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+table { width: 100%; border-collapse: collapse; min-width: 420px; font-variant-numeric: tabular-nums; }
+th, td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--line); }
+th { font-size: 0.85rem; color: var(--muted); font-weight: 600; letter-spacing: 0.04em; }
+tr:last-child td { border-bottom: 0; }
+td.pname { font-family: var(--font-display); font-weight: 700; }
+tr.is-next { background: var(--brass-soft); }
+tr.is-next td { color: #3a2a06; }
+:root[data-theme="dark"] tr.is-next td { color: var(--fg); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) tr.is-next td { color: var(--fg); } }
+.badge { display: inline-block; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; background: var(--pine); color: var(--on-pine); padding: 1px 9px; border-radius: 999px; margin-left: 8px; vertical-align: middle; }
+.jumma { background: var(--pine); color: var(--on-pine); border-radius: 12px; padding: 28px; }
+.jumma h3 { font-size: 1.4rem; }
+.jumma dl { margin: 18px 0 0; display: grid; gap: 12px; }
+.jumma dt { font-size: 0.85rem; color: var(--brass-soft); }
+.jumma dd { margin: 0; font-size: 1.2rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.note { margin-top: 14px; font-size: 0.88rem; color: var(--muted); }
+@media (max-width: 860px) { .times { grid-template-columns: 1fr; } }
+
+/* about + services */
+.alt { background: var(--surface); border-block: 1px solid var(--line); }
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.about p + p { margin-top: 14px; }
+.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.fact { border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; background: var(--bg); min-width: 0; }
+.fact b { display: block; font-family: var(--font-display); font-size: 1.15rem; color: var(--pine-2); }
+:root[data-theme="dark"] .fact b { color: var(--brass); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .fact b { color: var(--brass); } }
+.fact span { font-size: 0.9rem; color: var(--muted); }
+@media (max-width: 860px) { .about { grid-template-columns: 1fr; } }
+.services { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+.svc { padding: 22px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); min-width: 0; }
+.svc svg { color: var(--brass); margin-bottom: 10px; }
+.svc h3 { font-size: 1.15rem; }
+.svc p { margin-top: 6px; color: var(--muted); font-size: 0.95rem; }
+
+/* notices */
+.notices { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.notice { display: grid; grid-template-columns: 120px 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.notice time { color: var(--brass); font-weight: 600; font-variant-numeric: tabular-nums; }
+.notice h3 { font-size: 1.1rem; }
+.notice p { color: var(--muted); font-size: 0.95rem; margin-top: 2px; }
+@media (max-width: 560px) { .notice { grid-template-columns: 1fr; gap: 2px; } }
+
+/* donate + contact */
+.band { background: var(--pine); color: var(--on-pine); }
+.band .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.band h2 { font-size: clamp(1.5rem, 3.2vw, 2rem); }
+.band .kicker { color: var(--brass-soft); }
+.band p { color: color-mix(in srgb, var(--on-pine) 85%, transparent); margin-top: 10px; }
+.acct { margin-top: 18px; border: 1px solid rgba(255,255,255,0.25); border-radius: 10px; padding: 16px 18px; display: grid; gap: 10px; }
+.acct div { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.acct span { color: var(--brass-soft); font-size: 0.9rem; }
+.acct b { font-variant-numeric: tabular-nums; }
+.copy { margin-top: 14px; cursor: pointer; font: inherit; }
+.contact-list { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.contact-list li { display: grid; grid-template-columns: 90px 1fr; gap: 12px; }
+.contact-list span { color: var(--brass-soft); font-size: 0.9rem; }
+@media (max-width: 860px) { .band .cols { grid-template-columns: 1fr; } }
+footer { background: var(--pine); color: color-mix(in srgb, var(--on-pine) 70%, transparent); border-top: 1px solid rgba(255,255,255,0.15); font-size: 0.9rem; }
+footer .wrap { padding-block: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="কচুয়া কারিগরপাড়া মসজিদ, শুরুতে যান">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 28V14a10 10 0 0 1 20 0v14z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 4v-2M12 28v-8a4 4 0 0 1 8 0v8" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      <span>কারিগরপাড়া মসজিদ</span>
+    </a>
+    <nav class="nav" aria-label="প্রধান মেনু">
+      <a href="#namaz">নামাজের সময়</a>
+      <a href="#about">পরিচিতি</a>
+      <a href="#services">কার্যক্রম</a>
+      <a href="#notice">নোটিশ</a>
+      <a href="#donate">দান</a>
+      <a href="#contact">যোগাযোগ</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-text">
+        <p class="kicker">কচুয়া · কারিগরপাড়া</p>
+        <h1>কচুয়া কারিগরপাড়া জামে মসজিদ</h1>
+        <p class="lead">পাঁচ ওয়াক্ত নামাজ, জুমার জামাত, শিশুদের মক্তব ও সামাজিক সেবা। পাড়ার সবার জন্য খোলা একটি ইবাদতের ঘর।</p>
+        <div class="hero-actions">
+          <a class="btn btn-brass" href="#namaz">আজকের নামাজের সময়</a>
+          <a class="btn btn-line" href="#contact">যোগাযোগ করুন</a>
+        </div>
+      </div>
+      <div class="arch" aria-live="polite">
+        <p class="label">পরবর্তী জামাত</p>
+        <p class="next" id="nextName">–</p>
+        <p class="time" id="nextTime">–</p>
+        <p class="count" id="nextCount">&nbsp;</p>
+        <p class="today" id="todayDate">&nbsp;</p>
+      </div>
+    </div>
+  </div>
+
+  <section id="namaz">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">নামাজের সময়সূচি</p>
+        <h2>আজকের ওয়াক্ত ও জামাতের সময়</h2>
+        <p>ওয়াক্ত শুরুর সময় এবং মসজিদে জামাত শুরুর সময় আলাদা করে দেওয়া হলো।</p>
+      </div>
+      <div class="times">
+        <div>
+          <div class="tbl-box">
+            <table>
+              <thead><tr><th>নামাজ</th><th>ওয়াক্ত শুরু</th><th>জামাত</th></tr></thead>
+              <tbody id="rows"></tbody>
+            </table>
+          </div>
+          <p class="note">নমুনা সময়সূচি। মসজিদ কমিটির ঘোষিত সময় অনুযায়ী হালনাগাদ করুন। সূর্যোদয়ের পর ও সূর্য ঢলার আগে নামাজ পড়া নিষিদ্ধ সময়।</p>
+        </div>
+        <aside class="jumma">
+          <p class="kicker" style="color:var(--brass-soft)">প্রতি শুক্রবার</p>
+          <h3>জুমার নামাজ</h3>
+          <dl>
+            <div><dt>আযান</dt><dd>১২:৩০</dd></div>
+            <div><dt>খুতবা</dt><dd>১:০০</dd></div>
+            <div><dt>জামাত</dt><dd>১:১৫</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="alt">
+    <div class="wrap about">
+      <div>
+        <p class="kicker">আমাদের পরিচিতি</p>
+        <h2 style="font-size:clamp(1.6rem,3.6vw,2.2rem);margin-top:6px">কারিগরপাড়ার মানুষের মসজিদ</h2>
+        <p style="margin-top:16px">কারিগরপাড়া জামে মসজিদ স্থানীয় মুসল্লিদের দান ও সহযোগিতায় পরিচালিত হয়। এখানে নিয়মিত পাঁচ ওয়াক্ত জামাত, জুমা, তারাবিহ ও দুই ঈদের জামাত অনুষ্ঠিত হয়।</p>
+        <p>মসজিদ কমিটি পাড়ার প্রবীণ ও তরুণদের নিয়ে গঠিত। আয়-ব্যয়ের হিসাব প্রতি মাসে নোটিশ বোর্ডে ও এই ওয়েবসাইটে প্রকাশ করা হয়।</p>
+      </div>
+      <div class="facts">
+        <div class="fact"><b>প্রতিষ্ঠা সাল</b><span>কমিটির তথ্য অনুযায়ী যোগ করুন</span></div>
+        <div class="fact"><b>মুসল্লি ধারণক্ষমতা</b><span>কমিটির তথ্য অনুযায়ী যোগ করুন</span></div>
+        <div class="fact"><b>ইমাম</b><span>নাম ও যোগাযোগ যোগ করুন</span></div>
+        <div class="fact"><b>মোয়াজ্জিন</b><span>নাম যোগ করুন</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">মসজিদের কার্যক্রম</p>
+        <h2>নামাজের বাইরেও আমরা পাশে আছি</h2>
+      </div>
+      <div class="services">
+        <article class="svc">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 8c4-2 9-2 12 1v17c-3-3-8-3-12-1zM28 8c-4-2-9-2-12 1v17c3-3 8-3 12-1z"/></svg>
+          <h3>মক্তব ও কুরআন শিক্ষা</h3>
+          <p>শিশুদের জন্য আরবি পড়া, দোয়া ও প্রাথমিক দ্বীনি শিক্ষা। সকাল ও বিকাল দুই শিফট।</p>
+        </article>
+        <article class="svc">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="16" cy="16" r="11"/><path d="M16 9v7l5 3"/></svg>
+          <h3>জানাজা ও দাফন সহায়তা</h3>
+          <p>জানাজার নামাজ, গোসল ও কাফনের ব্যবস্থায় কমিটি সহায়তা করে।</p>
+        </article>
+        <article class="svc">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 27C6 20 4 14 8 10c3-3 7-1 8 2 1-3 5-5 8-2 4 4 2 10-8 17z"/></svg>
+          <h3>যাকাত ও সদকা বিতরণ</h3>
+          <p>সংগৃহীত যাকাত ও সদকা পাড়ার অসহায় পরিবারের মধ্যে স্বচ্ছভাবে বিতরণ করা হয়।</p>
+        </article>
+        <article class="svc">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 26h22M9 26V12l7-6 7 6v14M13 26v-7h6v7"/></svg>
+          <h3>ঈদ ও রমজানের আয়োজন</h3>
+          <p>তারাবিহ, ইফতার, ঈদের জামাত ও ঈদগাহের ব্যবস্থাপনা।</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="notice" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">নোটিশ বোর্ড</p>
+        <h2>সাম্প্রতিক ঘোষণা</h2>
+      </div>
+      <div class="notices">
+        <article class="notice"><time>প্রতি শুক্রবার</time><div><h3>জুমার আগে বয়ান</h3><p>জুমার আযানের আগে ইমাম সাহেবের সংক্ষিপ্ত বয়ান হয়। সবাই সময়মতো আসুন।</p></div></article>
+        <article class="notice"><time>প্রতি মাসে</time><div><h3>মাসিক আয়-ব্যয়ের হিসাব</h3><p>মাসের প্রথম জুমার পর কমিটি হিসাব প্রকাশ করে।</p></div></article>
+        <article class="notice"><time>নতুন ঘোষণা</time><div><h3>এখানে নতুন নোটিশ যোগ করুন</h3><p>মাহফিল, সভা বা নির্মাণ কাজের তথ্য এই তালিকায় তারিখসহ যোগ হবে।</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="donate" class="band">
+    <div class="wrap cols">
+      <div>
+        <p class="kicker">দান</p>
+        <h2>মসজিদের উন্নয়নে অংশ নিন</h2>
+        <p>আপনার দান মসজিদের বিদ্যুৎ বিল, মক্তবের খরচ, মেরামত ও গরিব মানুষের সেবায় ব্যয় হয়। নিচের নম্বরে সরাসরি পাঠাতে পারেন।</p>
+        <div class="acct">
+          <div><span>বিকাশ / নগদ (পার্সোনাল)</span><b id="payNo">০১XXX-XXXXXX</b></div>
+          <div><span>হিসাবধারী</span><b>মসজিদ কমিটির কোষাধ্যক্ষ</b></div>
+        </div>
+        <button class="btn btn-brass copy" id="copyBtn" type="button">নম্বর কপি করুন</button>
+      </div>
+      <div id="contact">
+        <p class="kicker">যোগাযোগ</p>
+        <h2>আমাদের সাথে কথা বলুন</h2>
+        <ul class="contact-list">
+          <li><span>ঠিকানা</span><b>কারিগরপাড়া, কচুয়া</b></li>
+          <li><span>ইমাম</span><b>০১XXX-XXXXXX</b></li>
+          <li><span>সভাপতি</span><b>০১XXX-XXXXXX</b></li>
+          <li><span>ইমেইল</span><b>example@mosque.org</b></li>
+        </ul>
+        <p>নম্বর ও ঠিকানা কমিটির সঠিক তথ্য দিয়ে বদলে নিন।</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© কচুয়া কারিগরপাড়া জামে মসজিদ কমিটি</span>
+    <span>আল্লাহ আমাদের নেক আমল কবুল করুন। আমিন।</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var digits = "০১২৩৪৫৬৭৮৯";
+  function bn(s) { return String(s).replace(/[0-9]/g, function (d) { return digits[d]; }); }
+  function fmt(h, m) { var h12 = h % 12 === 0 ? 12 : h % 12; return bn(h12 + ":" + (m < 10 ? "0" + m : m)); }
+  // 24-hour sample times: [name, start h, start m, jamaat h, jamaat m]
+  var P = [
+    ["ফজর", 4, 40, 5, 15],
+    ["যোহর", 11, 45, 13, 15],
+    ["আসর", 15, 10, 16, 0],
+    ["মাগরিব", 17, 15, 17, 20],
+    ["এশা", 18, 35, 19, 30]
+  ];
+  var now = new Date();
+  var mins = now.getHours() * 60 + now.getMinutes();
+  var idx = -1;
+  for (var i = 0; i < P.length; i++) { if (P[i][3] * 60 + P[i][4] > mins) { idx = i; break; } }
+  var tomorrow = idx === -1;
+  if (tomorrow) idx = 0;
+
+  var rows = document.getElementById("rows");
+  P.forEach(function (p, i) {
+    var tr = document.createElement("tr");
+    if (i === idx) tr.className = "is-next";
+    tr.innerHTML = '<td class="pname">' + p[0] + (i === idx ? '<span class="badge">পরবর্তী</span>' : "") + "</td><td>" + fmt(p[1], p[2]) + "</td><td>" + fmt(p[3], p[4]) + "</td>";
+    rows.appendChild(tr);
+  });
+
+  var n = P[idx];
+  document.getElementById("nextName").textContent = n[0] + (tomorrow ? " (আগামীকাল)" : "");
+  document.getElementById("nextTime").textContent = fmt(n[3], n[4]);
+  var diff = n[3] * 60 + n[4] - mins + (tomorrow ? 1440 : 0);
+  var h = Math.floor(diff / 60), m = diff % 60;
+  document.getElementById("nextCount").textContent = "আর " + (h ? bn(h) + " ঘণ্টা " : "") + bn(m) + " মিনিট বাকি";
+  try {
+    document.getElementById("todayDate").textContent = now.toLocaleDateString("bn-BD", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+  } catch (e) { document.getElementById("todayDate").textContent = ""; }
+
+  var btn = document.getElementById("copyBtn"), no = document.getElementById("payNo");
+  btn.addEventListener("click", function () {
+    var done = function () { btn.textContent = "কপি হয়েছে"; setTimeout(function () { btn.textContent = "নম্বর কপি করুন"; }, 1800); };
+    var sel = function () { var r = document.createRange(); r.selectNodeContents(no); var s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    try { navigator.clipboard.writeText(no.textContent).then(done, sel); } catch (e) { sel(); }
+  });
+})();
+</script>
+
+</body></html>
