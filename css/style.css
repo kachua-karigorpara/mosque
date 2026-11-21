@@ -38,7 +38,7 @@ p { margin: 0; }
 .bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 8px; }
 .brand { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; text-decoration: none; display: flex; align-items: center; gap: 10px; min-width: 0; }
 .brand img { flex: none; }
-.brand span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.brand span { line-height: 1.25; }
 .nav { display: flex; gap: 4px; }
 .nav a { text-decoration: none; padding: 6px 12px; border-radius: 6px; font-size: .95rem; }
 .nav a:hover { background: rgba(255,255,255,.12); }
@@ -83,7 +83,9 @@ p { margin: 0; }
 .strip-name { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; color: var(--pine-2); }
 .strip-time { font-weight: 700; font-size: 1.2rem; font-variant-numeric: tabular-nums; }
 .strip-count { color: var(--muted); font-size: .95rem; }
-.strip-date { margin-left: auto; color: var(--muted); font-size: .88rem; }
+.strip-date { margin-left: auto; color: var(--muted); font-size: .88rem; text-align: right; line-height: 1.5; }
+.strip-date .d-hijri { color: var(--brass); font-weight: 700; font-size: .95rem; }
+.strip-date .d-clock { color: var(--fg); font-weight: 700; font-variant-numeric: tabular-nums; }
 :root[data-theme="dark"] .strip-name { color: var(--brass); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .strip-name { color: var(--brass); } }
 
@@ -179,7 +181,7 @@ footer .wrap { padding-block: 18px; display: flex; flex-wrap: wrap; justify-cont
 @media (max-width: 560px) {
   body { font-size: 16px; }
   section { padding-block: 36px; }
-  .brand { font-size: 1rem; }
+  .brand { font-size: .95rem; gap: 8px; }
   .slides { height: 200px; }
   .slide-body { padding-inline: 16px; padding-bottom: 18px; }
   .slide h1, .slide h2 { font-size: 1.25rem; }
@@ -191,7 +193,7 @@ footer .wrap { padding-block: 18px; display: flex; flex-wrap: wrap; justify-cont
   .strip-in { display: grid; grid-template-columns: auto 1fr; gap: 0 14px; padding-block: 10px; }
   .strip-label { grid-column: 1 / -1; font-size: .82rem; }
   .strip-count { grid-column: 1 / -1; font-size: .88rem; }
-  .strip-date { grid-column: 1 / -1; margin-left: 0; font-size: .82rem; }
+  .strip-date { grid-column: 1 / -1; margin-left: 0; margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--line); text-align: left; font-size: .85rem; }
   .strip-name, .strip-time { font-size: 1.1rem; }
   th, td { padding: 11px 10px; font-size: .95rem; }
   .badge { display: block; width: fit-content; margin: 2px 0 0; }
