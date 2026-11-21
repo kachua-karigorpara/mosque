@@ -103,9 +103,54 @@
   var diff = n[3] * 60 + n[4] - mins + (tomorrow ? 1440 : 0);
   var h = Math.floor(diff / 60), m = diff % 60;
   $("nextCount").textContent = "আর " + (h ? bn(h) + " ঘণ্টা " : "") + bn(m) + " মিনিট বাকি";
-  try {
-    $("todayDate").textContent = now.toLocaleDateString("bn-BD", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
-  } catch (e) { $("todayDate").textContent = ""; }
+
+  /* ---------- Dates & clock (Hijri first, then Bangla) ---------- */
+  var WEEK = ["রবিবার","সোমবার","মঙ্গলবার","বুধবার","বৃহস্পতিবার","শুক্রবার","শনিবার"];
+  var GMON = ["জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল","মে","জুন","জুলাই","আগস্ট","সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"];
+  var HMON = ["মুহাররম","সফর","রবিউল আউয়াল","রবিউস সানি","জমাদিউল আউয়াল","জমাদিউস সানি","রজব","শা'বান","রমজান","শাওয়াল","জিলকদ","জিলহজ"];
+  var BMON = ["বৈশাখ","জ্যৈষ্ঠ","আষাঢ়","শ্রাবণ","ভাদ্র","আশ্বিন","কার্তিক","অগ্রহায়ণ","পৌষ","মাঘ","ফাল্গুন","চৈত্র"];
+  // Hijri offset in days (use -1 / +1 if the local moon sighting differs, e.g. Bangladesh)
+  var HIJRI_ADJUST = 0;
+
+  function hijri(d) {
+    try {
+      var x = new Date(d.getTime() + HIJRI_ADJUST * 864e5);
+      var parts = new Intl.DateTimeFormat("en-u-ca-islamic-umalqura-nu-latn", { day: "numeric", month: "numeric", year: "numeric" }).formatToParts(x);
+      var o = {};
+      parts.forEach(function (p) { o[p.type] = parseInt(p.value, 10); });
+      if (!o.day || !o.month || !o.year) return "";
+      return bn(o.day) + " " + HMON[o.month - 1] + " " + bn(o.year) + " হিজরি";
+    } catch (e) { return ""; }
+  }
+  function isLeap(y) { return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0; }
+  function bangla(d) {
+    var y = d.getFullYear();
+    var start = new Date(y, 3, 14);
+    if (d < start) { y -= 1; start = new Date(y, 3, 14); }
+    var a = Date.UTC(d.getFullYear(), d.getMonth(), d.getDate());
+    var b = Date.UTC(start.getFullYear(), 3, 14);
+    var off = Math.floor((a - b) / 864e5);
+    var len = [31,31,31,31,31,30,30,30,30,30, isLeap(y + 1) ? 31 : 30, 30];
+    var mi = 0;
+    while (mi < 11 && off >= len[mi]) { off -= len[mi]; mi++; }
+    return bn(off + 1) + " " + BMON[mi] + " " + bn(y - 593) + " বঙ্গাব্দ";
+  }
+  function period(h) { return h < 4 ? "রাত" : h < 12 ? "সকাল" : h < 15 ? "দুপুর" : h < 17 ? "বিকাল" : h < 19 ? "সন্ধ্যা" : "রাত"; }
+  function two(n) { return n < 10 ? "0" + n : n; }
+
+  function paintDates() {
+    var d = new Date();
+    $("hijriDate").textContent = hijri(d);
+    $("todayDate").textContent = WEEK[d.getDay()] + ", " + bn(d.getDate()) + " " + GMON[d.getMonth()] + " " + bn(d.getFullYear());
+    $("banglaDate").textContent = bangla(d);
+  }
+  function paintClock() {
+    var d = new Date(), h = d.getHours(), h12 = h % 12 === 0 ? 12 : h % 12;
+    $("clock").textContent = period(h) + " " + bn(h12 + ":" + two(d.getMinutes()) + ":" + two(d.getSeconds()));
+  }
+  paintDates(); paintClock();
+  setInterval(paintClock, 1000);
+  setInterval(paintDates, 60000);
 
   /* ---------- Copy payment number ---------- */
   var btn = $("copyBtn"), no = $("payNo");
