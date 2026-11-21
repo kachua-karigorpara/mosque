@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>কচুয়া কারিগরপাড়া জামে মসজিদ</title>
+  <meta name="description" content="কচুয়া কারিগরপাড়া জামে মসজিদের নামাজের সময়সূচি, কার্যক্রম, নোটিশ ও যোগাযোগ।">
+  <meta name="theme-color" content="#0e3b33">
+  <link rel="icon" href="images/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&family=Noto+Serif+Bengali:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="কচুয়া কারিগরপাড়া মসজিদ, শুরুতে যান">
+      <img src="images/icons/logo.svg" width="30" height="30" alt="">
+      <span>কারিগরপাড়া মসজিদ</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="মেনু খুলুন">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="mainNav" aria-label="প্রধান মেনু">
+      <a href="#namaz">নামাজের সময়</a>
+      <a href="#about">পরিচিতি</a>
+      <a href="#services">কার্যক্রম</a>
+      <a href="#notice">নোটিশ</a>
+      <a href="#donate">দান</a>
+      <a href="#contact">যোগাযোগ</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero slider (compact) -->
+  <section class="slider" id="slider" aria-roledescription="carousel" aria-label="মসজিদের পরিচিতি">
+    <div class="slides">
+      <div class="slide is-active" aria-roledescription="slide" aria-label="১ / ৩">
+        <img src="images/hero/slide-1.svg" alt="" width="1200" height="400">
+        <div class="wrap slide-body">
+          <p class="kicker">কচুয়া · কারিগরপাড়া</p>
+          <h1>কচুয়া কারিগরপাড়া জামে মসজিদ</h1>
+          <p class="lead">পাঁচ ওয়াক্ত নামাজ, জুমার জামাত, শিশুদের মক্তব ও সামাজিক সেবা।</p>
+          <div class="hero-actions">
+            <a class="btn btn-brass" href="#namaz">নামাজের সময়</a>
+            <a class="btn btn-line" href="#contact">যোগাযোগ</a>
+          </div>
+        </div>
+      </div>
+      <div class="slide" aria-roledescription="slide" aria-label="২ / ৩">
+        <img src="images/hero/slide-2.svg" alt="" width="1200" height="400" loading="lazy">
+        <div class="wrap slide-body">
+          <p class="kicker">প্রতি শুক্রবার</p>
+          <h2>জুমার জামাত দুপুর ১:৩০ মিনিটে</h2>
+          <p class="lead">আযান ১২:৩০, খুতবা ১:০০। সবাই সময়মতো আসুন।</p>
+          <div class="hero-actions">
+            <a class="btn btn-brass" href="#namaz">বিস্তারিত দেখুন</a>
+          </div>
+        </div>
+      </div>
+      <div class="slide" aria-roledescription="slide" aria-label="৩ / ৩">
+        <img src="images/hero/slide-3.svg" alt="" width="1200" height="400" loading="lazy">
+        <div class="wrap slide-body">
+          <p class="kicker">দান</p>
+          <h2>মসজিদের উন্নয়নে অংশ নিন</h2>
+          <p class="lead">আপনার দান মক্তব, মেরামত ও গরিব মানুষের সেবায় ব্যয় হয়।</p>
+          <div class="hero-actions">
+            <a class="btn btn-brass" href="#donate">দান করুন</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="s-btn s-prev" type="button" aria-label="আগের স্লাইড">&#8249;</button>
+    <button class="s-btn s-next" type="button" aria-label="পরের স্লাইড">&#8250;</button>
+    <div class="dots" role="tablist" aria-label="স্লাইড বাছাই"></div>
+  </section>
+
+  <!-- Next prayer strip -->
+  <div class="next-strip" aria-live="polite">
+    <div class="wrap strip-in">
+      <p class="strip-label">পরবর্তী জামাত</p>
+      <p class="strip-name" id="nextName">–</p>
+      <p class="strip-time" id="nextTime">–</p>
+      <p class="strip-count" id="nextCount">&nbsp;</p>
+      <p class="strip-date" id="todayDate">&nbsp;</p>
+    </div>
+  </div>
+
+  <section id="namaz">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">নামাজের সময়সূচি</p>
+        <h2>আজকের ওয়াক্ত ও জামাতের সময়</h2>
+        <p>ওয়াক্ত শুরুর সময় এবং মসজিদে জামাত শুরুর সময় আলাদা করে দেওয়া হলো।</p>
+      </div>
+      <div class="times">
+        <div>
+          <div class="tbl-box">
+            <table>
+              <thead><tr><th>নামাজ</th><th>ওয়াক্ত শুরু</th><th>জামাত</th></tr></thead>
+              <tbody id="rows"></tbody>
+            </table>
+          </div>
+          <p class="note">নমুনা সময়সূচি। মসজিদ কমিটির ঘোষিত সময় অনুযায়ী হালনাগাদ করুন। সূর্যোদয়ের পর ও সূর্য ঢলার আগে নামাজ পড়া নিষিদ্ধ সময়।</p>
+        </div>
+        <aside class="jumma">
+          <p class="kicker">প্রতি শুক্রবার</p>
+          <h3>জুমার নামাজ</h3>
+          <dl>
+            <div><dt>আযান</dt><dd>১২:৩০</dd></div>
+            <div><dt>খুতবা</dt><dd>১:০০</dd></div>
+            <div><dt>জামাত</dt><dd>১:৩০</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="alt">
+    <div class="wrap about">
+      <div>
+        <p class="kicker">আমাদের পরিচিতি</p>
+        <h2 class="h2-lg">কারিগরপাড়ার মানুষের মসজিদ</h2>
+        <p class="mt">কারিগরপাড়া জামে মসজিদ স্থানীয় মুসল্লিদের দান ও সহযোগিতায় পরিচালিত হয়। এখানে নিয়মিত পাঁচ ওয়াক্ত জামাত, জুমা, তারাবিহ ও দুই ঈদের জামাত অনুষ্ঠিত হয়।</p>
+        <p>মসজিদ কমিটি পাড়ার প্রবীণ ও তরুণদের নিয়ে গঠিত। আয়-ব্যয়ের হিসাব প্রতি মাসে নোটিশ বোর্ডে ও এই ওয়েবসাইটে প্রকাশ করা হয়।</p>
+      </div>
+      <div class="facts">
+        <div class="fact"><b>প্রতিষ্ঠা সাল</b><span>কমিটির তথ্য অনুযায়ী যোগ করুন</span></div>
+        <div class="fact"><b>মুসল্লি ধারণক্ষমতা</b><span>কমিটির তথ্য অনুযায়ী যোগ করুন</span></div>
+        <div class="fact"><b>ইমাম</b><span>নাম ও যোগাযোগ যোগ করুন</span></div>
+        <div class="fact"><b>মোয়াজ্জিন</b><span>নাম যোগ করুন</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">মসজিদের কার্যক্রম</p>
+        <h2>নামাজের বাইরেও আমরা পাশে আছি</h2>
+      </div>
+      <div class="services">
+        <article class="svc">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 8c4-2 9-2 12 1v17c-3-3-8-3-12-1zM28 8c-4-2-9-2-12 1v17c3-3 8-3 12-1z"/></svg>
+          <h3>মক্তব ও কুরআন শিক্ষা</h3>
+          <p>শিশুদের জন্য আরবি পড়া, দোয়া ও প্রাথমিক দ্বীনি শিক্ষা। সকাল ও বিকাল দুই শিফট।</p>
+        </article>
+        <article class="svc">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="16" cy="16" r="11"/><path d="M16 9v7l5 3"/></svg>
+          <h3>জানাজা ও দাফন সহায়তা</h3>
+          <p>জানাজার নামাজ, গোসল ও কাফনের ব্যবস্থায় কমিটি সহায়তা করে।</p>
+        </article>
+        <article class="svc">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 27C6 20 4 14 8 10c3-3 7-1 8 2 1-3 5-5 8-2 4 4 2 10-8 17z"/></svg>
+          <h3>যাকাত ও সদকা বিতরণ</h3>
+          <p>সংগৃহীত যাকাত ও সদকা পাড়ার অসহায় পরিবারের মধ্যে স্বচ্ছভাবে বিতরণ করা হয়।</p>
+        </article>
+        <article class="svc">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 26h22M9 26V12l7-6 7 6v14M13 26v-7h6v7"/></svg>
+          <h3>ঈদ ও রমজানের আয়োজন</h3>
+          <p>তারাবিহ, ইফতার, ঈদের জামাত ও ঈদগাহের ব্যবস্থাপনা।</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="notice" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">নোটিশ বোর্ড</p>
+        <h2>সাম্প্রতিক ঘোষণা</h2>
+      </div>
+      <div class="notices">
+        <article class="notice"><time>প্রতি শুক্রবার</time><div><h3>জুমার আগে বয়ান</h3><p>জুমার আযানের আগে ইমাম সাহেবের সংক্ষিপ্ত বয়ান হয়। সবাই সময়মতো আসুন।</p></div></article>
+        <article class="notice"><time>প্রতি মাসে</time><div><h3>মাসিক আয়-ব্যয়ের হিসাব</h3><p>মাসের প্রথম জুমার পর কমিটি হিসাব প্রকাশ করে।</p></div></article>
+        <article class="notice"><time>নতুন ঘোষণা</time><div><h3>এখানে নতুন নোটিশ যোগ করুন</h3><p>মাহফিল, সভা বা নির্মাণ কাজের তথ্য এই তালিকায় তারিখসহ যোগ হবে।</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="donate" class="band">
+    <div class="wrap cols">
+      <div>
+        <p class="kicker">দান</p>
+        <h2>মসজিদের উন্নয়নে অংশ নিন</h2>
+        <p>আপনার দান মসজিদের বিদ্যুৎ বিল, মক্তবের খরচ, মেরামত ও গরিব মানুষের সেবায় ব্যয় হয়। নিচের নম্বরে সরাসরি পাঠাতে পারেন।</p>
+        <div class="acct">
+          <div><span>বিকাশ / নগদ (পার্সোনাল)</span><b id="payNo">০১XXX-XXXXXX</b></div>
+          <div><span>হিসাবধারী</span><b>মসজিদ কমিটির কোষাধ্যক্ষ</b></div>
+        </div>
+        <button class="btn btn-brass copy" id="copyBtn" type="button">নম্বর কপি করুন</button>
+      </div>
+      <div id="contact">
+        <p class="kicker">যোগাযোগ</p>
+        <h2>আমাদের সাথে কথা বলুন</h2>
+        <ul class="contact-list">
+          <li><span>ঠিকানা</span><b>কারিগরপাড়া, কচুয়া</b></li>
+          <li><span>ইমাম</span><b>০১XXX-XXXXXX</b></li>
+          <li><span>সভাপতি</span><b>০১XXX-XXXXXX</b></li>
+          <li><span>ইমেইল</span><b>example@mosque.org</b></li>
+        </ul>
+        <p>নম্বর ও ঠিকানা কমিটির সঠিক তথ্য দিয়ে বদলে নিন।</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© কচুয়া কারিগরপাড়া জামে মসজিদ কমিটি</span>
+    <span>আল্লাহ আমাদের নেক আমল কবুল করুন। আমিন।</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
